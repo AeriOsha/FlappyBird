@@ -75,13 +75,33 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
     function gameOver() {
-    	document.body.style.background = "url('GameOver.png')"
+    	showModal()
         clearInterval(gameTimerId)
         console.log('game over')
         isGameOver = true
         document.removeEventListener('keyup', control)
 
     }
+
+var modal = document.getElementById("myModal");
+
+
+
+var span = document.getElementsByClassName("close")[0];
+
+
+function showModal() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  location.reload();
+}
+
+
+
 
 
 })
