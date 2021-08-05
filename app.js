@@ -1,8 +1,17 @@
+
+  
 document.addEventListener('DOMContentLoaded' , () => {
     const bird = document.querySelector('.bird')
     const gameDisplay = document.querySelector('.game-container')
     const ground = document.querySelector('.ground-moving')
 
+    let modal = document.getElementById("modal");
+    let span = document.getElementsByClassName("close")[0];
+
+    //let wingSound = document.createElement('audio')
+    //let dieSound = document.createElement('audio')
+    let wingSound = new Audio('wingSoundEffect.mp3')
+    let dieSound = new Audio('dieSoundEffect.mp3')
     let birdLeft = 220
     let birdBottom = 100
     let gravity = 2
@@ -20,6 +29,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     function control(e) {
         if (e.keyCode === 32) {
             jump()
+            wingSound.play()
         }
     }
 
@@ -63,6 +73,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                 (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap -200)||
                 birdBottom === 0 
                 ) {
+                dieSound.play()
                 gameOver()
                 clearInterval(timerId)
             }
@@ -73,9 +84,8 @@ document.addEventListener('DOMContentLoaded' , () => {
     }
     generateObstacle()
 
-
-    function gameOver() {
-    	showModal()
+function gameOver() {
+        showModal()
         clearInterval(gameTimerId)
         console.log('game over')
         isGameOver = true
@@ -83,24 +93,15 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     }
 
-var modal = document.getElementById("myModal");
-
-
-
-var span = document.getElementsByClassName("close")[0];
-
-
 function showModal() {
   modal.style.display = "block";
-}
+  }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
   location.reload();
 }
-
-
 
 
 

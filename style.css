@@ -1,24 +1,26 @@
+
+  
 body{
-	display:flex;
+  display:flex;
 }
 
 .game-container{
-	width:500px;
-	height:730px;
-	position:absolute;
-	left:80px;
+  width:500px;
+  height:730px;
+  position:absolute;
+  left:80px;
 }
 
 .border-left{
-	width:80px;
-	height:790px;
-	background-color:white;
-	position:absolute;
-	z-index:+2;
+  width:80px;
+  height:790px;
+  background-color:white;
+  position:absolute;
+  z-index:+2;
 }
 
 .border-right{
-	width: 80px;
+  width: 80px;
     height: 790px;
     position: absolute;
     background-color: white;
@@ -35,44 +37,44 @@ body{
     top: -50px;
 }
 .sky{
-	background-image: url('background.png');
-	width:500px;
-	height:580px;
-	position:absolute;
+  background-image: url('background.png');
+  width:500px;
+  height:580px;
+  position:absolute;
 }
 
 .ground{
-	background-color:brown;
-	width:500px;
-	height:150px;
-	position:absolute;
-	top:580px;
-	z-index:+1 ;
+  background-color:brown;
+  width:500px;
+  height:150px;
+  position:absolute;
+  top:580px;
+  z-index:+1 ;
 }
 
 .bird{
-	background-image: url('flappy-bird.png');
-	position:absolute;
-	width:60px;
-	 height:45px;
-	 left: 220px;
+  background-image: url('flappy-bird.png');
+  position:absolute;
+  width:60px;
+   height:45px;
+   left: 220px;
     bottom: 100px;
 }
 
 .obstacle{
-	background-image: url('flappybird-pipe.png');
-	width:60px;
-	height:300px;
-	position:absolute;
+  background-image: url('flappybird-pipe.png');
+  width:60px;
+  height:300px;
+  position:absolute;
 }
 .topObstacle{
-	background-image: url('flappybird-pipe.png');
-	transform: rotate(180deg);
-	width:60px;
-	height:300px;
-	position:absolute;
+  background-image: url('flappybird-pipe.png');
+  transform: rotate(180deg);
+  width:60px;
+  height:300px;
+  position:absolute;
 }
-.modal {
+#modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -87,9 +89,9 @@ body{
   background-color: rgba(0,0,0,0); /* Black w/ opacity */
 }
 
-/* Modal Content */
+
 .modal-content {
-  background-color: #fefefe;
+  background-color: brown;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -98,12 +100,24 @@ body{
 
 }
 
-/* The Close Button */
+p { 
+  font-size:30px; 
+  animation:blinkingText 500ms infinite;
+   } 
+
+@keyframes blinkingText{ 
+  0%{color: #FEFEFE;    } 
+  49%{    color: #FEFEFE; } 
+  60%{    color: transparent; }
+   99%{    color:transparent;  } 
+   100%{   color: #FEFEFE;    } }
+
 .close {
-  color: #aaaaaa;
-  float: right;
+  color: #FEFEFE;
+  float: center;
   font-size: 28px;
   font-weight: bold;
+
 }
 
 .close:hover,
