@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded' , () => {
     const bird = document.querySelector('.bird')
     const gameDisplay = document.querySelector('.game-container')
     const ground = document.querySelector('.ground-moving')
-
-    let modal = document.getElementById("modal");
+    
+    
+    let scoreLabel = document.querySelector('.scoreLabel')
+    let modal = document.getElementById('modal');
     let span = document.getElementsByClassName("close")[0];
 
-    //let wingSound = document.createElement('audio')
-    //let dieSound = document.createElement('audio')
     let wingSound = new Audio('wingSoundEffect.mp3')
     let dieSound = new Audio('dieSoundEffect.mp3')
     let birdLeft = 220
@@ -18,8 +18,23 @@ document.addEventListener('DOMContentLoaded' , () => {
     let isGameOver = false
     let gap = 430
 
+    let scoreLabelData ={
+        score: 0,
+        text: "Score: "
 
+    }
+    function resetScoreLabel(){
+        scoreLabelData.score=0
+        scoreLabel.innerHTML = scoreLabelData.text + scoreLabelData.score
+    }
+    function addScore(points){
+        scoreLabelData.score += points
+        scoreLabel.innerHTML = scoreLabelData.text + scoreLabelData.score
+    }
+    
+    
     function startGame() {
+        resetScoreLabel()
         birdBottom -= gravity
         bird.style.bottom = birdBottom + 'px'
         bird.style.left = birdLeft + 'px'
@@ -67,20 +82,22 @@ document.addEventListener('DOMContentLoaded' , () => {
                 clearInterval(timerId)
                 gameDisplay.removeChild(obstacle)
                 gameDisplay.removeChild(topObstacle)
-            }
-            if (
-                obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 &&
-                (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap -200)||
+                addScore(1)
+                
+           }
+           
+            if (obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 &&
+               (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap -200)||
                 birdBottom === 0 
-                ) {
+               ) {
                 dieSound.play()
                 gameOver()
-                clearInterval(timerId)
-            }
+               clearInterval(timerId)
+           }
         }
         let timerId = setInterval(moveObstacle, 20) 
         if (!isGameOver) setTimeout(generateObstacle, 3000)
-
+        
     }
     generateObstacle()
 
@@ -97,7 +114,7 @@ function showModal() {
   modal.style.display = "block";
   }
 
-// When the user clicks on <span> (x), close the modal
+
 span.onclick = function() {
   modal.style.display = "none";
   location.reload();

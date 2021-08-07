@@ -2,6 +2,7 @@
   
 body{
   display:flex;
+  overflow:hidden;
 }
 
 .game-container{
@@ -9,6 +10,7 @@ body{
   height:730px;
   position:absolute;
   left:80px;
+
 }
 
 .border-left{
@@ -73,6 +75,12 @@ body{
   width:60px;
   height:300px;
   position:absolute;
+}
+.scoreLabel{
+  font-size: 20px;
+  color:white;
+  position:absolute;
+  left:80px;
 }
 #modal {
   display: none; /* Hidden by default */
