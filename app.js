@@ -24,21 +24,23 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     }
     function resetScoreLabel(){
-        scoreLabelData.score=0
         scoreLabel.innerHTML = scoreLabelData.text + scoreLabelData.score
+        scoreLabelData.score=0
     }
+    resetScoreLabel()
     function addScore(points){
         scoreLabelData.score += points
         scoreLabel.innerHTML = scoreLabelData.text + scoreLabelData.score
     }
     
-    
+    //this function is the gravity 
     function startGame() {
-        resetScoreLabel()
-        birdBottom -= gravity
+
+                birdBottom -= gravity
         bird.style.bottom = birdBottom + 'px'
         bird.style.left = birdLeft + 'px'
     }
+    //this sets a 20ms delay and then calls our gravity function again
     let gameTimerId = setInterval(startGame, 20)
 
     function control(e) {
@@ -79,10 +81,11 @@ document.addEventListener('DOMContentLoaded' , () => {
             topObstacle.style.left = obstacleLeft + 'px'
 
             if (obstacleLeft === -60) {
+                addScore(1)
                 clearInterval(timerId)
                 gameDisplay.removeChild(obstacle)
                 gameDisplay.removeChild(topObstacle)
-                addScore(1)
+               
                 
            }
            
@@ -98,6 +101,7 @@ document.addEventListener('DOMContentLoaded' , () => {
         let timerId = setInterval(moveObstacle, 20) 
         if (!isGameOver) setTimeout(generateObstacle, 3000)
         
+
     }
     generateObstacle()
 
@@ -107,6 +111,7 @@ function gameOver() {
         console.log('game over')
         isGameOver = true
         document.removeEventListener('keyup', control)
+        
 
     }
 
@@ -117,6 +122,7 @@ function showModal() {
 
 span.onclick = function() {
   modal.style.display = "none";
+
   location.reload();
 }
 

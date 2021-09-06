@@ -77,10 +77,12 @@ body{
   position:absolute;
 }
 .scoreLabel{
-  font-size: 20px;
+  font-size: 4em;
   color:white;
-  position:absolute;
-  left:80px;
+  position:relative;
+  text-align: center;
+  top:30px;
+  font-weight: bold;
 }
 #modal {
   display: none; /* Hidden by default */
@@ -111,14 +113,15 @@ body{
 p { 
   font-size:30px; 
   animation:blinkingText 500ms infinite;
-   } 
+} 
 
 @keyframes blinkingText{ 
   0%{color: #FEFEFE;    } 
-  49%{    color: #FEFEFE; } 
-  60%{    color: transparent; }
-   99%{    color:transparent;  } 
-   100%{   color: #FEFEFE;    } }
+  49%{  color: #FEFEFE; } 
+  60%{color: transparent;}
+  99%{color:transparent;} 
+  100%{color: #FEFEFE;} 
+}
 
 .close {
   color: #FEFEFE;
